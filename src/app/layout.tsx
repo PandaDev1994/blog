@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "The blog",
-  description: "Este é um blog com nect.js",
+  title: 'The blog',
+  description: 'Este é um blog com nect.js',
 };
 
 export default function RootLayout({
@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={"antialiased"}>{children}</body>
+    <html lang='pt-BR'>
+      <body className={'antialiased'}>{children}</body>
     </html>
   );
 }
