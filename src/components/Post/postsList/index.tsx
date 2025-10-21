@@ -2,6 +2,7 @@ import { postRepository } from '@/repositories/post';
 import { PostCoverImage } from '../PostCoverImage';
 import { PostDescription } from '../PostDescription';
 import clsx from 'clsx';
+import { formatDateTime, formatRelativeDate } from '@/utils/format-datetime';
 
 export async function PostsList() {
   const posts = await postRepository.findAll();
@@ -28,7 +29,8 @@ export async function PostsList() {
               }}
             />
             <PostDescription
-              date={`${post.createdAt}`}
+              titleTime={formatRelativeDate(post.createdAt)}
+              date={formatDateTime(post.createdAt)}
               description={post.excerpt}
               title={post.title}
               url={postLink}
