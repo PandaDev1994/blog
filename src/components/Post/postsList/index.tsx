@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { formatDateTime, formatRelativeDate } from '@/utils/format-datetime';
 
 export async function PostsList() {
-  const posts = await postRepository.findAll();
+  const posts = await postRepository.findAllPublic();
 
   return (
     <div
@@ -29,6 +29,7 @@ export async function PostsList() {
               }}
             />
             <PostDescription
+              as='h2'
               titleTime={formatRelativeDate(post.createdAt)}
               date={formatDateTime(post.createdAt)}
               description={post.excerpt}
