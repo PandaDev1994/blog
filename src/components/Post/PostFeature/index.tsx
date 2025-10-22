@@ -1,10 +1,10 @@
-import { postRepository } from '@/repositories/post';
 import { PostCoverImage } from '../PostCoverImage';
 import { PostDescription } from '../PostDescription';
 import { formatDateTime, formatRelativeDate } from '@/utils/format-datetime';
+import { findAllPublicPosts } from '@/lib/post/queries';
 
 export async function PostFeature() {
-  const posts = await postRepository.findAllPublic();
+  const posts = await findAllPublicPosts();
   const post = posts[0];
 
   return (

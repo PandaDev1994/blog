@@ -1,11 +1,11 @@
-import { postRepository } from '@/repositories/post';
 import { PostCoverImage } from '../PostCoverImage';
 import { PostDescription } from '../PostDescription';
 import clsx from 'clsx';
 import { formatDateTime, formatRelativeDate } from '@/utils/format-datetime';
+import { findAllPublicPosts } from '@/lib/post/queries';
 
 export async function PostsList() {
-  const posts = await postRepository.findAllPublic();
+  const posts = await findAllPublicPosts();
 
   return (
     <div
@@ -15,7 +15,7 @@ export async function PostsList() {
         'lg:grid lg:grid-cols-3',
       )}
     >
-      {posts.map(post => {
+      {posts.slice(1).map(post => {
         const postLink = `/post/${post.slug}`;
         return (
           <div className='flex flex-col group' key={post.id}>
