@@ -6,6 +6,7 @@ type PostDescriptionProps = {
   description: string;
   url: string;
   titleTime: string;
+  as: 'h1' | 'h2';
 };
 
 export function PostDescription({
@@ -14,6 +15,7 @@ export function PostDescription({
   title,
   url,
   titleTime,
+  as,
 }: PostDescriptionProps) {
   return (
     <div className='flex flex-col gap-2 sm:justify-center'>
@@ -24,7 +26,7 @@ export function PostDescription({
       >
         {date}
       </time>
-      <PostHeading url={url} as='h2'>
+      <PostHeading url={url} as={as}>
         {title}
       </PostHeading>
       {description}
