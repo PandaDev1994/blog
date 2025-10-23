@@ -2,10 +2,10 @@ import { PostCoverImage } from '../PostCoverImage';
 import { PostDescription } from '../PostDescription';
 import clsx from 'clsx';
 import { formatDateTime, formatRelativeDate } from '@/utils/format-datetime';
-import { findAllPublicPosts } from '@/lib/post/queries';
+import { findAllPublicPostsCached } from '@/lib/post/queries';
 
 export async function PostsList() {
-  const posts = await findAllPublicPosts();
+  const posts = await findAllPublicPostsCached();
 
   return (
     <div
