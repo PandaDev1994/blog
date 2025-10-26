@@ -1,7 +1,7 @@
 import { PostCoverImage } from '../PostCoverImage';
 import { PostDescription } from '../PostDescription';
 import clsx from 'clsx';
-import { formatDateTime, formatRelativeDate } from '@/utils/format-datetime';
+
 import { findAllPublicPostsCached } from '@/lib/post/queries';
 
 export async function PostsList() {
@@ -29,12 +29,11 @@ export async function PostsList() {
               }}
             />
             <PostDescription
-              as='h2'
-              titleTime={formatRelativeDate(post.createdAt)}
-              date={formatDateTime(post.createdAt)}
-              description={post.excerpt}
+              date={post.createdAt}
               title={post.title}
+              description={post.excerpt}
               url={postLink}
+              as={'h2'}
             />
           </div>
         );
