@@ -8,5 +8,5 @@ export type PostModel = {
   published: boolean;
   createdAt: string;
   updatedAt: string;
-  autor: string;
+  author: string;
 };
