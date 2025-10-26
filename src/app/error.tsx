@@ -8,17 +8,17 @@ type RootErrorPageProps = {
   reset: () => void;
 };
 
-export default function RootErrorPage({ error, reset }: RootErrorPageProps) {
+export default function RootErrorPage({ error }: RootErrorPageProps) {
   useEffect(() => {
-    console.log(error);
+    console.log(error); 
   }, [error]);
 
   return (
     <ErrorMessage
-      pageTitle={'Slug'}
-      contentTitle={'Error'}
+      pageTitle={'Internal Server Error'}
+      contentTitle={'501'}
       content={
-        <button onClick={() => reset()}>Clique para tentar novamente</button>
+        'Ocorreu um erro do qual nossa aplicação não conseguiu se recuperar. Tente novamente mais'
       }
     />
   );
