@@ -1,4 +1,8 @@
 import { findPostBySlugCached } from '@/lib/post/queries';
+import Image from 'next/image';
+import { PostHeading } from '../Post/PostHeading';
+import { PostDate } from '../PostDate';
+import { SafeMkDown } from '../SafeMkDown/intex';
 
 type SinglePostProps = {
   slug: string;
@@ -7,8 +11,24 @@ type SinglePostProps = {
 export async function SinglePost({ slug }: SinglePostProps) {
   const post = await findPostBySlugCached(slug);
   return (
-    <div>
-      <p>{post.content}</p>
-    </div>
+    <article className='mb-16'>
+      <header className='group flex flex-col gap-4 mb-4'>
+        <Image
+          className='rounded-xl '
+          src={post.coverImageUrl}
+          alt={post.title}
+          width={1200}
+          height={720}
+        />
+
+        <PostHeading url={`/post/${post.slug}`}>{post.title}</PostHeading>
+        <p>
+          {post.author} | {<PostDate date={post.createdAt} />}
+        </p>
+      </header>
+      <p className='text-xl mb-4 text-slate-600 italic'>{post.excerpt}</p>
+
+      <SafeMkDown mkDown={post.content} />
+    </article>
   );
 }
