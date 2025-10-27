@@ -9,7 +9,7 @@ import { postsTable } from './schemas';
   try {
     await drizzleDb.delete(postsTable);
     await drizzleDb.insert(postsTable).values(posts);
-    console.log('Seeding posts...');
+    console.log('Seeding posts...', posts);
   } catch (error) {
     console.log(error);
   }
